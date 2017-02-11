@@ -19,7 +19,7 @@ button.onclick=function() {
         
     };
     //Make the request
-    request.open('GET','http://bhavyasrees.imad.hasura-app.io/counter',true);
+    request.open('GET','http://bhavyasrees.imad.hasura-app.io/counter');
     request.send(null);
    
     
