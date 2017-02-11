@@ -6,11 +6,12 @@ var app = express();
 app.use(morgan('combined'));
 
 
-var articleOne={
-    title:'Article One Sree',
-    heading:'Article One',
-    date:'Feb 8,2016',
-    content:`
+var articles={
+    'article-one':{
+        title:'Article One Sree',
+        heading:'Article One',
+        date:'Feb 8,2016',
+        content:`
                   <p>
                       This is the content for my first article.Adding a few more 
                        content to my paragraph.Typing and typing nothing important just 
@@ -25,7 +26,38 @@ var articleOne={
                        Again typing and typing.Nothing specific but random stuff,seems
                        fun.After all words are always fun aren't they??
                    </p>`
-};
+    },
+    'article-two':{
+        title:'Article Two Sree',
+    heading:'Article Two',
+    date:'Feb 11,2016',
+    content:`
+                  <p>
+                      This is the content for my second article.Adding a few more 
+                       content to my paragraph.Typing and typing nothing important just 
+                       for the sake of a few sentences.
+                  </p>
+                   <p>
+                       Again typing and typing.Nothing specific but random stuff,seems
+                       fun.After all words are always fun aren't they??
+                   </p>`
+    },
+    'article-three':{
+        title:'Article Three Sree',
+        heading:'Article Three',
+        date:'Feb 11,2016',
+        content:`
+                  <p>
+                      This is the content for my third article.
+                  </p>
+                  <p>
+                    Learning to create a web app.This is week 2 module P4.
+                   </p>`
+                   
+    }
+    };
+
+
 function createTemplate (data){
     var title=data.title;
     var date= data.date;
@@ -72,17 +104,14 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one',function(req,res){
-    res.send(createTemplate(articleOne));
+app.get('/:articleName',function(req,res){
+    //articleName==article-one
+    //articles[articleName]=={} content object for article one
+    var articleName=req.params.articleName;
+    res.send(createTemplate(articles[articleOne]));
 });
 
-app.get('/article-two',function(req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
 
-app.get('/article-three',function(req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
-});
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
