@@ -11,7 +11,7 @@ button.onclick=function() {
             //Take some action
             if(request.status===200){
                 var counter=request.resposeText;
-                var span=document.getElementById("count");
+                var span=document.getElementById('count');
                 span.innerHTML=counter.toString();
             }
         }
@@ -19,7 +19,7 @@ button.onclick=function() {
         
     };
     //Make the request
-    request.open('GET','http://bhavyasrees.imad.hasura-app.io/counter',true);
+    request.open('GET','bhavyasrees.imad.hasura-app.io/counter',true);
     request.send(null);
    
     
